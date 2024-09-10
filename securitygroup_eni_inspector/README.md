@@ -60,23 +60,13 @@ The Lambda Function expects an event that contains Security Group IDs. The event
 
 | Function Name | Details | Args | Returns | Raises | Logs |
 | ------------- | ------- | ---- | ------- | ------ | ---- |
-| `sg_to_eni_mapper` | Retrieve and log information about ENI (Elastic Network Interfaces) associations for a specified Security Group. <br><br> *This function performs the following operations:* <br><br> 1. Retrieves and logs the name of the Security Group. <br><br> 2. Retrieves and logs the ENIs associated to the Security Group. <br><br> 3. Returns a dictionary that includes a list of ENI IDs associated with the specified Security Group, and the Security Group ID itself. | `securitygroup_id (str)` <br><br> The ID of the Security Group for which to retrieve ENI associations and Security Group references. | `dict`: A dictionary containing: <br><br> - `eni_ids (list(str))`: A list of ENIs associated with the specified Security Group. <br> - `securitygroup_id (str)`: The ID of the successfully processed Security Group. | Exception: Re-raises any exceptions encountered while retrieving the Security Group name or ENI associations. Exceptions are logged with error details. | `[INFO]`: Logs details about the Security Group and its associated ENIs. <br><br> `[ERROR]`: Logs any errors encountered while retrieving the Security Group details or ENI associations. |
-| `main` | Main function to process the event and orchestrate the necessary operations. <br><br> *This function performs the following operations:* <br><br> 1. Iterates over the Security Group IDs provided in the event. <br><br> 2. Calls `sg_to_eni_mapper` for each Security Group ID to retrieve the ENI associations. <br><br> 3. Collects the Security Group IDs for which the ENI associations were successfully retrieved. <br><br> 4. Calls `check_sg_references` to determine which Security Groups in the specified AWS region reference the collected Security Groups, stored in `target_sgs`. <br><br> 5. Logs information about the target Security Groups. | `event (dict)` | `None` | `None` | `[INFO]`: Logs details about the target *(collected)* Security Groups. |
-
-
-
-
-
-
+| `sg_to_eni_mapper` | Retrieve and log information about ENI (Elastic Network Interfaces) associations for a specified Security Group. <br><br> *This function performs the following operations:* <br><br> 1. Retrieves and logs the name of the Security Group. <br><br> 2. Retrieves and logs the ENIs associated to the Security Group. <br><br> 3. Returns a dictionary that includes a list of ENI IDs associated with the specified Security Group, and the Security Group ID itself. | `securitygroup_id (str)` <br><br> The ID of the Security Group for which to retrieve ENI associations and Security Group references. | `dict` - A dictionary containing: <br><br> `eni_ids (list(str))` - A list of ENIs associated with the specified Security Group. <br><br> `securitygroup_id (str)` - The ID of the successfully processed Security Group. | Exception: Re-raises any exceptions encountered while retrieving the Security Group name or ENI associations. Exceptions are logged with error details. <br><br> **NOTE:** <br> Any exceptions encountered during processing will be propagated to the calling function *(i.e. main())* where they will be handled. | `[INFO]` - Logs details about the Security Group and its associated ENIs. <br><br> `[ERROR]` - Logs any errors encountered while retrieving the Security Group details or ENI associations. |
+| `main` | Main function to process the event and orchestrate the necessary operations. <br><br> *This function performs the following operations:* <br><br> 1. Iterates over the Security Group IDs provided in the event. <br><br> 2. Calls `sg_to_eni_mapper` for each Security Group ID to retrieve the ENI associations. <br><br> 3. Collects the Security Group IDs for which the ENI associations were successfully retrieved. <br><br> 4. Calls `check_sg_references` to determine which Security Groups in the specified AWS region reference the collected Security Groups, stored in `target_sgs`. <br><br> 5. Logs information about the target Security Groups. | `event (dict)` | `None` | `None` | `[INFO]` - Logs details about the target *(collected)* Security Groups. |
 |  |  |  |  |  |  |
+| `lambda_handler` | The AWS Lambda Function handler is executed when the Lambda Function is invoked. This function calls `main()` and returns **Success** or **Error** responses. | `event (dict)` - An event containing Security Group IDs. <br><br> `context(LambdaContext)` - The context object provided by the AWS Lambda service *(not used in this script)*. | `dict` - A dictionary containing: <br><br> `statusCode (int)` - HTTP status code indicating the result of the code execution. A `200` status code indicates that the code executed successfully. A `500` status code indicates that the code failed.  | `None` | `[INFO]` - Logs whether the event was processed successfully, or if no Security Groups were specified. <br><br> `[ERROR]` - Logs any errors encountered during the execution. |
 
+<br><br>
 
-
-
-
-
-
-
-
-
-  
+## Author
+#### Author: Liché Moodley
+#### Email: lashaya582@gmail.com
