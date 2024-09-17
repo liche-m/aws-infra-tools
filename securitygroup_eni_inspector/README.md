@@ -78,20 +78,8 @@ The Lambda Function expects an event that contains Security Group IDs. The event
 4. Run the script to deploy the Lambda Function:
    `./ deploy_securitygroup_eni_inspector`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
+   
 ## Author
 #### Author: Liché Moodley
 #### Email: lashaya582@gmail.com
