@@ -72,7 +72,7 @@ zip deployment_package.zip app.py
 
 # Introduce a delay of 30 seconds to allow for IAM Role propagation.
 echo "Waiting for IAM Role propagation..."
-sleep 30
+sleep 15
 
 # Create the Lambda Function.
 aws lambda create-function \
