@@ -83,4 +83,4 @@ The Lambda Function expects an event that contains Lambda Function ARNs. The eve
    
 ## Author
 #### Author: Liché Moodley
-#### Email: lichem@ozow.com
+#### Email: moodleyliche@gmail.com
