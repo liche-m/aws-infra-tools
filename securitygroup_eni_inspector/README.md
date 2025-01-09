@@ -82,4 +82,4 @@ The Lambda Function expects an event that contains Security Group IDs. The event
    
 ## Author
 #### Author: Liché Moodley
-#### Email: lashaya582@gmail.com
+#### Email: moodleyliche@gmail.com
