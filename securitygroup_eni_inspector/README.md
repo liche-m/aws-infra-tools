@@ -8,9 +8,9 @@ This script is designed to run on an AWS Lambda Function. The Lambda Function ex
 
 ```
 {
-  "sg1": "sg-0f813c42c4c55643b",
-  "sg2": "sg-0a84a401c5bf6ef9d",
-  "sg3": "sg-0e4890977444a19e3"
+  "sg1": "sg-0f813aaaaac55643b",
+  "sg2": "sg-0a84agggggbf6ef9d",
+  "sg3": "sg-0e489kkkkk44a19e3"
 }
 ```
 
@@ -48,9 +48,9 @@ The Lambda Function expects an event that contains Security Group IDs. The event
 
 ```
 {
-  "sg1": "sg-0f813c42c4c55643b",
-  "sg2": "sg-0a84a401c5bf6ef9d",
-  "sg3": "sg-0e4890977444a19e3"
+  "sg1": "sg-0f813aaaaac55643b",
+  "sg2": "sg-0a84agggggbf6ef9d",
+  "sg3": "sg-0e489kkkkk44a19e3"
 }
 ```
 
